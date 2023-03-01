@@ -1,0 +1,26 @@
+/* .location-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+} */
+
+body{
+    background-color: #007FFF !important;
+}
+
+.location-info__temprature h2{
+    font-size: 60px;
+}
+
+.location-info__temprature p{
+    font-size: 27px;
+}
+
+.location-info img {
+    width: 8%;
+}
+
+.icon {
+    color: yellow;
+    font-size: 7rem;
+}
