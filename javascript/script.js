@@ -1,6 +1,7 @@
 let locationname = document.getElementById("location-name");
 let locationtemp = document.getElementById("location-temp");
 let locationfeels = document.getElementById("location-feels");
+let locationother = document.getElementById("location-other");
 
 async function weather() {
     const response = await fetch(
@@ -13,8 +14,9 @@ async function weather() {
     // })
 
     locationname.innerHTML = response.location.name;
-    locationtemp.innerHTML = response.current.temp_f;
-    locationfeels.innerHTML = response.current.feelslike_f;
+    locationtemp.innerHTML = response.current.temp_c;
+    locationfeels.innerHTML = response.current.feelslike_c;
+    locationother.innerHTML = response.current.cloud;
 
     console.log(response);
 

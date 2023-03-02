@@ -16,7 +16,7 @@
   </head>
   <body>
       <h2 class="location-name text-center text-white mt-4" id="location-name"></h2>
-      <div class="location-info d-flex justify-content-center gap-4 mt-5">
+      <div class="location-info d-flex justify-content-center gap-4 mt-5 flex-column flex-md-row">
         <div><i class="icon fas fa-solid fa-cloud-sun"></i></div>
         <div class="location-info__temprature">
           <h2 class="text-white">
@@ -26,6 +26,10 @@
             Feels <span id="location-feels"></span><sup>o</sup>
           </p>
         </div>
+      </div>
+      <div class="additional-info text-center mt-5 text-white">
+          <p>Make the most of this nice weather that I generated for you, or else.</p>
+         <!-- <p>clouds: <span id="location-other"></span></p> -->
       </div>
     <script src="./javascript/script.js"></script>
   </body>
