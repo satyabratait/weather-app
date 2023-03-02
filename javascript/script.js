@@ -16,7 +16,7 @@ async function weather() {
     locationname.innerHTML = response.location.name;
     locationtemp.innerHTML = response.current.temp_c;
     locationfeels.innerHTML = response.current.feelslike_c;
-    locationother.innerHTML = response.current.cloud;
+    // locationother.innerHTML = response.current.cloud;
 
     console.log(response);
 
