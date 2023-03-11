@@ -4,9 +4,31 @@ let locationfeels = document.getElementById("location-feels");
 let locationother = document.getElementById("location-other");
 let locationimage = document.querySelector(".location-info__image");
 
+let weathersuggestion = document.getElementById("weatherSuggestion");
+
+let obj = [
+  "Bhubaneswar",
+  "London",
+  "New Delhi",
+  "New York",
+  "Paris",
+  "Oslo",
+  "Srinagar",
+  "Chicago",
+  "Istanbul",
+  "Moscow",
+  "Tel Aviv-Yafo",
+  "Dubai",
+  "Berlin",
+  "Grindelwald",
+  "Kolkata",
+  "bengaluru",
+];
+
 async function weather(query) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=${query}&aqi=no`
+    `http://127.0.0.1:5050/?place=${query}`
+    // http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=${query}&aqi=no`
   )
     .then(function (res) {
       return res.json();
@@ -14,8 +36,8 @@ async function weather(query) {
     .catch((err) => alert("You entered Wrong city name"));
 
   locationname.value = `${response.location.name}`;
-  locationtemp.innerHTML = response.current.temp_c;
-  locationfeels.innerHTML = response.current.feelslike_c;
+  locationtemp.innerHTML = response.current.tempF;
+  locationfeels.innerHTML = response.current.tempC;
 
   let conditionvalue = response.current.condition.text;
   let tempvalue = response.current.temp_c;
@@ -66,8 +88,27 @@ async function weather(query) {
     }
   }
 
+  // weathersuggestion.innerHTML = obj.forEach((element) =>{
+
+  // })
+
   console.log(response);
 }
+
+(function suggestions() {
+  // obj.forEach((city) => {
+  //   weathersuggestion.textContent += city + "\n";
+  // })
+  for (let i = 0; i < obj.length; i++) {
+    weathersuggestion.innerHTML += `<span class="suggestion-contents">${obj[i]}</span>`;
+  }
+})();
+
+weathersuggestion.addEventListener("click", (e) => {
+  console.log(e.target.textContent);
+  weather(e.target.textContent);
+  // weathersuggestion.addClassList('hide');
+});
 
 locationname.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
@@ -79,6 +120,6 @@ locationname.addEventListener("keyup", (e) => {
 //   weather("Bhubaneswar");
 // };
 
-(() =>{
+(() => {
   weather("Bhubaneswar");
 })();
