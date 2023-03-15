@@ -6,44 +6,34 @@ let locationimage = document.querySelector(".location-info__image");
 
 let weathersuggestion = document.getElementById("weatherSuggestion");
 
-let obj = [
-  "Bhubaneswar",
-  "London",
-  "New Delhi",
-  "New York",
-  "Paris",
-  "Oslo",
-  "Srinagar",
-  "Chicago",
-  "Istanbul",
-  "Moscow",
-  "Tel Aviv-Yafo",
-  "Dubai",
-  "Berlin",
-  "Grindelwald",
-  "Kolkata",
-  "bengaluru",
-];
+let obj = [];
 
 async function weather(query) {
   const response = await fetch(
-    `http://127.0.0.1:5050/?place=${query}`
-    // http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=${query}&aqi=no`
+    `http://127.0.0.1:5050/get?place=${query}`
+    // `http://api.weatherapi.com/v1/current.json?key=0c80b2b56f1943ada19100744230103&q=${query}&aqi=no`
   )
-    .then(function (res) {
+  .then(function (res) {
+    // console.log(res.json());
+    return res.json();
+  })
+  const responsecities = await fetch(
+    `http://127.0.0.1:5050/cities`
+  )
+    .then(function (res){
       return res.json();
     })
     .catch((err) => alert("You entered Wrong city name"));
-
+    
+  obj.push(responsecities);
+  suggestions();
   locationname.value = `${response.location.name}`;
-  locationtemp.innerHTML = response.current.tempF;
-  locationfeels.innerHTML = response.current.tempC;
+  locationtemp.innerHTML = response.current.tempC;
+  locationfeels.innerHTML = response.current.tempF;
 
   let conditionvalue = response.current.condition.text;
-  let tempvalue = response.current.temp_c;
 
   console.log(conditionvalue);
-  console.log(tempvalue);
 
   if (response.current.is_day == 1) {
     if (conditionvalue == "Sunny" || conditionvalue == "Clear") {
@@ -81,28 +71,24 @@ async function weather(query) {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-4.svg";
     } else if (conditionvalue == "Heavy rain") {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-7.svg";
-    } else if (conditionvalue == "Mist" || conditionvalue == "Moderate snow") {
+    } else if (conditionvalue == "Mist" || conditionvalue == "Moderate snow" || conditionvalue == "Light snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-4.svg";
-    } else if (conditionvalue == "Snow") {
+    } else if (conditionvalue == "Snow" || conditionvalue == "Heavy snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-6.svg";
     }
   }
 
-  // weathersuggestion.innerHTML = obj.forEach((element) =>{
-
-  // })
-
   console.log(response);
 }
 
-(function suggestions() {
-  // obj.forEach((city) => {
-  //   weathersuggestion.textContent += city + "\n";
-  // })
-  for (let i = 0; i < obj.length; i++) {
-    weathersuggestion.innerHTML += `<span class="suggestion-contents">${obj[i]}</span>`;
+function suggestions() {
+  if (obj[0] != undefined) {
+    for (let i = 0; i < obj[0].length; i++) {
+      console.log(obj[0][i]);
+      weathersuggestion.innerHTML += `<span class="suggestion-contents">${obj[0][i]}</span>`;
+    } 
   }
-})();
+};
 
 weathersuggestion.addEventListener("click", (e) => {
   console.log(e.target.textContent);
