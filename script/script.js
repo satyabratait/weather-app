@@ -75,10 +75,6 @@ locationname.addEventListener("keyup", (e) => {
   }
 });
 
-// window.onload = () => {
-//   weather("Bhubaneswar");
-// };
-
 (() =>{
   weather("Bhubaneswar");
 })();
