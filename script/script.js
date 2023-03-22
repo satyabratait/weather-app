@@ -25,7 +25,7 @@ async function weather(query) {
     })
     .catch((err) => alert("You entered Wrong city name"));
     
-  obj.push(responsecities);
+  obj.push(responsecities)  
   suggestions();
   locationname.value = `${response.location.name}`;
   locationtemp.innerHTML = response.current.tempC;
@@ -33,67 +33,62 @@ async function weather(query) {
 
   let conditionvalue = response.current.condition.text;
 
-  console.log(conditionvalue);
-
-  if (response.current.is_day == 1) {
-    if (conditionvalue == "Sunny" || conditionvalue == "Clear") {
+  if (response.current.is_day === 1) {
+    if (conditionvalue === "Sunny" || conditionvalue === "Clear") {
       locationimage.src = "./assets/weather/weather-svg/animated/day.svg";
     } else if (
-      conditionvalue == "Partly cloudy" ||
-      conditionvalue == "Overcast"
+      conditionvalue === "Partly cloudy" ||
+      conditionvalue === "Overcast"
     ) {
       locationimage.src =
         "./assets/weather/weather-svg/animated/cloudy-day-1.svg";
-    } else if (conditionvalue == "Cloudy") {
+    } else if (conditionvalue === "Cloudy") {
       locationimage.src = "./assets/weather/weather-svg/animated/cloudy.svg";
-    } else if (conditionvalue == "Rain" || conditionvalue == "Moderate rain") {
+    } else if (conditionvalue === "Rain" || conditionvalue === "Moderate rain") {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-4.svg";
-    } else if (conditionvalue == "Heavy rain") {
+    } else if (conditionvalue === "Heavy rain") {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-7.svg";
-    } else if (conditionvalue == "Mist" || conditionvalue == "Moderate snow") {
+    } else if (conditionvalue === "Mist" || conditionvalue === "Moderate snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-2.svg";
-    } else if (conditionvalue == "Snow") {
+    } else if (conditionvalue === "Snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-6.svg";
     }
   } else {
-    if (conditionvalue == "Clear") {
+    if (conditionvalue === "Clear") {
       locationimage.src = "./assets/weather/weather-svg/animated/night.svg";
     } else if (
-      conditionvalue == "Partly cloudy" ||
-      conditionvalue == "Overcast"
+      conditionvalue === "Partly cloudy" ||
+      conditionvalue === "Overcast"
     ) {
       locationimage.src =
         "./assets/weather/weather-svg/animated/cloudy-night-1.svg";
-    } else if (conditionvalue == "Cloudy") {
+    } else if (conditionvalue === "Cloudy") {
       locationimage.src =
         "./assets/weather/weather-svg/animated/cloudy-night-3.svg";
-    } else if (conditionvalue == "Rain" || conditionvalue == "Moderate rain") {
+    } else if (conditionvalue === "Rain" || conditionvalue === "Moderate rain") {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-4.svg";
-    } else if (conditionvalue == "Heavy rain") {
+    } else if (conditionvalue === "Heavy rain") {
       locationimage.src = "./assets/weather/weather-svg/animated/rainy-7.svg";
-    } else if (conditionvalue == "Mist" || conditionvalue == "Moderate snow" || conditionvalue == "Light snow") {
+    } else if (conditionvalue === "Mist" || conditionvalue === "Moderate snow" || conditionvalue === "Light snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-4.svg";
-    } else if (conditionvalue == "Snow" || conditionvalue == "Heavy snow") {
+    } else if (conditionvalue === "Snow" || conditionvalue === "Heavy snow") {
       locationimage.src = "./assets/weather/weather-svg/animated/snowy-6.svg";
     }
   }
-
   console.log(response);
 }
 
 function suggestions() {
-  if (obj[0] != undefined) {
+  if (obj[0] !== undefined) {
     for (let i = 0; i < obj[0].length; i++) {
-      console.log(obj[0][i]);
       weathersuggestion.innerHTML += `<span class="suggestion-contents">${obj[0][i]}</span>`;
-    } 
+    }
+    weathersuggestion += ""; 
   }
 };
 
 weathersuggestion.addEventListener("click", (e) => {
-  console.log(e.target.textContent);
   weather(e.target.textContent);
-  // weathersuggestion.addClassList('hide');
 });
 
 locationname.addEventListener("keyup", (e) => {
@@ -101,10 +96,6 @@ locationname.addEventListener("keyup", (e) => {
     weather(e.target.value);
   }
 });
-
-// window.onload = () => {
-//   weather("Bhubaneswar");
-// };
 
 (() => {
   weather("Bhubaneswar");

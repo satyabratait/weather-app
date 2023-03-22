@@ -66,20 +66,20 @@ input {
   gap: 10%;
 }
 
-.location-info__image {
+.locationInfoImage {
   height: 12rem;
   width: 10rem;
 }
 
-.location-info__temprature {
+.locationInfoTemprature {
   margin-top: 20%;
 }
 
-.location-info__temprature h2 {
+.locationInfoTemprature h2 {
   font-size: 3rem;
 }
 
-.location-info__temprature p {
+.locationInfoTemprature p {
   font-family: "Poppins";
   display: flex;
   gap: 4%;
@@ -93,7 +93,6 @@ input {
 }
 
 .additional-info {
-  /* margin-top: 5%; */
   font-family: "Poppins";
   font-weight: 400;
   font-size: 27px;
@@ -111,7 +110,6 @@ input {
   display: none;
   flex-direction: column;
   position: absolute;
-  /* height: 40%; */
   width: 100%;
   background-color: #c7d0d6;
   color: #000;
@@ -121,10 +119,7 @@ input {
   opacity: 0.8;
 }
 
-
-
 .suggestion-contents{
-  /* height: 20%; */
   margin: 20px 0 !important;
 }
 
@@ -140,7 +135,6 @@ input {
   .location-info__image {
     height: 16rem;
     width: 15rem;
-    /* margin-left: 10%; */
   }
 
   .location-header {
@@ -153,7 +147,6 @@ input {
   .additional-info {
     width: 60%;
     margin-left: 30%;
-    /* text-align: start; */
   }
 }
 
