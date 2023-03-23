@@ -14,7 +14,7 @@ async function weather(query) {
   .then(function (res) {
     return res.json();
   })
-  const responsecities = await fetch(
+  const responseCities = await fetch(
     `http://127.0.0.1:5050/cities`
   )
     .then(function (res){
@@ -22,7 +22,7 @@ async function weather(query) {
     })
     .catch((err) => alert("You entered Wrong city name"));
     
-  obj.push(responsecities)  
+  obj.push(responseCities)  
   suggestions();
   try {
     locationname.value = `${response.location.name}`;
