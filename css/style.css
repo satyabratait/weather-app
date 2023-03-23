@@ -8,7 +8,6 @@
 body {
   background-color: rgb(72, 50, 168) !important;
   color: white;
-
 }
 
 .weather {
@@ -24,8 +23,6 @@ body {
 }
 
 .location-header img {
-  margin-left: 10%;
-  margin-right: 10%;
   width: 50px;
 }
 
@@ -34,7 +31,6 @@ input {
   outline: none;
   border: none;
   font-family: "Poppins";
-  font-size: 2rem;
   text-align: center;
   color: white;
 }
@@ -62,21 +58,14 @@ input {
 
 .location-info {
   display: flex;
-  margin-top: 3%;
-  gap: 10%;
-}
-
-.locationInfoImage {
-  height: 12rem;
-  width: 10rem;
 }
 
 .locationInfoTemprature {
-  margin-top: 20%;
+  margin-top: 13%;
 }
 
 .locationInfoTemprature h2 {
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .locationInfoTemprature p {
@@ -87,26 +76,19 @@ input {
   font-size: 2rem;
 }
 
-.icon {
-  color: yellow !important;
-  font-size: 7rem;
-}
-
 .additional-info {
   font-family: "Poppins";
   font-weight: 400;
-  font-size: 27px;
   text-align: center;
-  width: 50%;
-  margin-left: 2%;
+  margin-top: 5%;
 }
 
-.dropdown{
+.dropdown {
   display: inline-block;
   width: 100%;
 }
 
-.weather-suggestion{
+.weather-suggestion {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -119,7 +101,7 @@ input {
   opacity: 0.8;
 }
 
-.suggestion-contents{
+.suggestion-contents {
   margin: 20px 0 !important;
 }
 
@@ -127,41 +109,89 @@ input {
   display: flex;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 280px) {
+  .location-header a {
+    display: none;
+  }
+
   input {
+    font-size: 1.5rem;
+  }
+
+  .locationInfoImage {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .locationInfoTemprature {
+    margin-top: 15%;
+  }
+
+  .locationInfoTemprature h2 {
     font-size: 3rem;
   }
 
-  .location-info__image {
-    height: 16rem;
-    width: 15rem;
-  }
-
-  .location-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 20%;
+  .locationInfoTemprature p {
+    font-size: 1rem;
   }
 
   .additional-info {
-    width: 60%;
-    margin-left: 30%;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 402px) {
+  input {
+    font-size: 2.4rem;
+  }
+
+  .location-info {
+    padding-right: 7%;
+  }
+
+  .locationInfoImage {
+    height: 14rem;
+    width: 14rem;
+  }
+
+  .locationInfoTemprature p {
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 600px) {
-  .location-header {
+  input {
+    font-size: 3rem;
+  }
+
+  .location-info {
+    padding-right: 0%;
+  }
+
+  .location-header a {
     display: flex;
-    flex-direction: row;
-    margin-left: 0%;
+  }
+
+  .locationInfoTemprature h2 {
+    font-size: 5rem;
+  }
+
+  .locationInfoImage {
+    height: 16rem;
+    width: 16rem;
+  }
+
+  .additional-info {
+    width: 70%;
+    margin-left: 5%;
+    font-size: 2rem;
   }
 }
 
-@media (min-width: 425px) {
-  .additional-info {
-    width: 50%;
-    text-align: center;
-    margin-left: 5%;
+@media (min-width: 1024px) {
+  input {
+    font-size: 4rem;
   }
 }
