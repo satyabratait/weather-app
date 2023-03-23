@@ -12,7 +12,6 @@ async function weather(query) {
     `http://127.0.0.1:5050/get?place=${query}`
   )
   .then(function (res) {
-    // console.log(res.json());
     return res.json();
   })
   const responsecities = await fetch(
